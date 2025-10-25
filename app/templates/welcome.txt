@@ -1,0 +1,6 @@
+Hola {{ name }},
+
+¡Bienvenido/a! Registramos tus datos correctamente.
+{% if phone %}Teléfono informado: {{ phone }}{% else %}No se indicó teléfono.{% endif %}
+
+Este correo fue enviado por {{ service_name }}.
