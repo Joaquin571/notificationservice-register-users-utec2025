@@ -40,3 +40,7 @@ def notify_email_welcome(payload: WelcomePayload, _=Depends(verify_token)):
     result = send_email(payload.to, payload.name, payload.phone)
     # result debe incluir el "id" del mensaje
     return result
+
+@app.get("/healthcheck")
+def healthcheck():
+    return {"status": "ok"}

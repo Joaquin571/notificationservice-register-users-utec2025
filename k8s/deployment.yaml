@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-deploy
+  namespace: obligatorio
+  labels: { app: notification }
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: notification }
+  template:
+    metadata:
+      labels: { app: notification }
+    spec:
+      imagePullSecrets:
+        - name: ecr-creds
+      containers:
+        - name: notification
+          image: 439590609369.dkr.ecr.us-east-1.amazonaws.com/obligatorio-notification:latest
+          ports:
+            - containerPort: 8081
+          env:
+            - name: GMAIL_CREDENTIALS_FILE
+              value: "/secrets/credentials.json"
+            - name: GMAIL_TOKEN_FILE
+              value: "/secrets/token.json"
+              name: FROM_EMAIL
+              value: "joaquin.gonzalez.c@estudiantes.utec.edu.uy"
+          volumeMounts:
+            - name: gmail-secrets
+              mountPath: /secrets
+              readOnly: true
+      volumes:
+        - name: gmail-secrets
+          secret:
+            secretName: notification-gmail
