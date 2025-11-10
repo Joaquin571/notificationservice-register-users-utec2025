@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     gmail_token_file: str = Field("./secrets/token.json", alias="GMAIL_TOKEN_FILE")
     from_email: str = Field(..., alias="FROM_EMAIL")
     notify_api_token: str = Field("dev-secret", alias="NOTIFY_API_TOKEN")
+    admin_email: str = Field("", alias="ADMIN_EMAIL")
 
     class Config:
         env_file = ".env"

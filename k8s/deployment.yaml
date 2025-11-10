@@ -16,7 +16,7 @@ spec:
         - name: ecr-creds
       containers:
         - name: notification
-          image: 439590609369.dkr.ecr.us-east-1.amazonaws.com/obligatorio-notification:latest
+          image: 825501491126.dkr.ecr.us-east-1.amazonaws.com/notification-service:latest
           ports:
             - containerPort: 8081
           env:
@@ -24,7 +24,9 @@ spec:
               value: "/secrets/credentials.json"
             - name: GMAIL_TOKEN_FILE
               value: "/secrets/token.json"
-              name: FROM_EMAIL
+            - name: FROM_EMAIL
+              value: "joaquin.gonzalez.c@estudiantes.utec.edu.uy"
+            - name: ADMIN_EMAIL
               value: "joaquin.gonzalez.c@estudiantes.utec.edu.uy"
           volumeMounts:
             - name: gmail-secrets

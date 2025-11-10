@@ -9,3 +9,4 @@ data:
   GMAIL_CREDENTIALS_FILE: "/app/secrets/credentials.json"
   GMAIL_TOKEN_FILE: "/app/secrets/token.json"
   NOTIFY_API_TOKEN: "dev-secret"
+
